@@ -35,14 +35,14 @@ unstop/
 
 ## 🚀 Run Locally
 
-### Recommended
+# Recommended
 ```bash
 cd /home/kalaiyarasan/Projects/unstop
 python3 -m http.server 8000
 ```
 Open `http://localhost:8000` in your browser.
 
-### Direct Open
+# Direct Open
 - Open `index.html` in your browser directly.
 
 ### VS Code Live Server

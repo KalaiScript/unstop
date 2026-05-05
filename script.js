@@ -9,6 +9,50 @@ document.addEventListener('DOMContentLoaded', function() {
   const formMessage = document.querySelector('.form-message');
   let selectedTea = null;
 
+  // Set active nav link
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const navLinks = document.querySelectorAll('.nav-menu a');
+  navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPage) {
+      link.classList.add('active');
+    }
+  });
+
+  // Scroll animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('animate');
+        }, index * 100); // Stagger animation
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.section').forEach(section => {
+    observer.observe(section);
+  });
+
+  // Stagger card animations
+  const cardObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.style.animation = `fadeInUp 0.6s ease-out ${index * 0.1}s both`;
+        }, index * 100);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.card, .special-item, .value-item, .team-member, .gallery-item, .event-item').forEach(item => {
+    cardObserver.observe(item);
+  });
+
   if (ctaButton) {
     ctaButton.addEventListener('click', function(e) {
       e.preventDefault();
@@ -57,4 +101,23 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-});
+  // Contact form handling
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const formMessage = contactForm.querySelector('.form-message');
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      const subjectInput = document.getElementById('subject');
+      const messageInput = document.getElementById('message');
+
+      if (!nameInput.value.trim() || !emailInput.value.trim() || !subjectInput.value.trim() || !messageInput.value.trim()) {
+        formMessage.textContent = 'Please fill in all fields.';
+        return;
+      }
+
+      formMessage.textContent = 'Thank you for your message! We\'ll get back to you soon.';
+      contactForm.reset();
+    });
+  }

@@ -1,0 +1,18 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="40" fill="#F8F3ED"/>
+  <rect x="80" y="80" width="1040" height="640" rx="32" fill="#ffffff" stroke="#D9CFC1" stroke-width="6"/>
+  <rect x="120" y="140" width="380" height="200" rx="24" fill="#E9D8C8"/>
+  <rect x="540" y="140" width="520" height="200" rx="24" fill="#D0C1AD"/>
+  <rect x="140" y="170" width="340" height="40" rx="12" fill="#ffffff"/>
+  <rect x="140" y="230" width="280" height="22" rx="11" fill="#F4E6D9"/>
+  <rect x="140" y="270" width="200" height="22" rx="11" fill="#F4E6D9"/>
+  <path d="M200 340C200 301.49 234.49 267 273 267H330C368.51 267 403 301.49 403 340V395C403 433.51 368.51 468 330 468H273C234.49 468 200 433.51 200 395V340Z" fill="#FDE8C9"/>
+  <path d="M453 480C453 432.83 490.83 395 538 395H760C807.17 395 845 432.83 845 480V522C845 569.17 807.17 607 760 607H538C490.83 607 453 569.17 453 522V480Z" fill="#C8B59E"/>
+  <path d="M600 420C590 420 582 428 582 438C582 448 590 456 600 456C610 456 618 448 618 438C618 428 610 420 600 420Z" fill="#F8F3ED"/>
+  <path d="M700 420C690 420 682 428 682 438C682 448 690 456 700 456C710 456 718 448 718 438C718 428 710 420 700 420Z" fill="#F8F3ED"/>
+  <circle cx="930" cy="520" r="60" fill="#FDE8C9"/>
+  <circle cx="930" cy="520" r="38" fill="#D9BFA8"/>
+  <path d="M122 640H1078" stroke="#D9CFC1" stroke-width="4" stroke-linecap="round"/>
+  <text x="180" y="450" font-family="Inter, sans-serif" font-size="36" fill="#8D6B4C">Evergreen Tea House</text>
+  <text x="180" y="500" font-family="Inter, sans-serif" font-size="22" fill="#9B7E6B">A calm, modern tea website with cozy visuals.</text>
+</svg>

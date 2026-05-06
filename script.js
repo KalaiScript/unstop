@@ -35,8 +35,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }, observerOptions);
 
-  document.querySelectorAll('.section').forEach(section => {
+  // Add animate class to sections that are already in viewport
+  const sections = document.querySelectorAll('.section');
+  sections.forEach((section, index) => {
     observer.observe(section);
+    // Check if already in viewport and add animate class immediately
+    if (section.getBoundingClientRect().top < window.innerHeight) {
+      setTimeout(() => {
+        section.classList.add('animate');
+      }, index * 100);
+    }
   });
 
   // Stagger card animations

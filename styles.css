@@ -147,6 +147,10 @@ a {
   padding-top: 90px; /* Account for fixed navbar */
 }
 
+.hero.animate {
+  opacity: 1;
+}
+
 .hero::before,
 .hero::after {
   content: "";

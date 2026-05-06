@@ -36,6 +36,12 @@ document.addEventListener('DOMContentLoaded', function() {
   }, observerOptions);
 
   // Add animate class to sections that are already in viewport
+  const hero = document.querySelector('.hero');
+  if (hero) {
+    // Hero always gets animate class immediately
+    hero.classList.add('animate');
+  }
+
   const sections = document.querySelectorAll('.section');
   sections.forEach((section, index) => {
     observer.observe(section);

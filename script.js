@@ -262,3 +262,21 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
+
+  // Cart modal functionality
+  const cartIcon = document.querySelector('.cart-icon');
+  const cartModal = document.getElementById('cart-modal');
+  const closeCart = document.querySelector('.close-cart');
+
+  if (cartIcon) {
+    cartIcon.addEventListener('click', () => {
+      updateCartDisplay();
+      cartModal.style.display = 'flex';
+    });
+  }
+
+  if (closeCart) {
+    closeCart.addEventListener('click', () => {
+      cartModal.style.display = 'none';
+    });
+  }

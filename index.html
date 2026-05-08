@@ -45,15 +45,29 @@
           <article class="card">
             <h3>Classic Green Tea</h3>
             <p>Fresh, grassy, and lightly sweet with a clean finish.</p>
+            <span class="price">$4.50</span>
           </article>
           <article class="card">
             <h3>Chamomile Calm</h3>
             <p>Soft floral notes to unwind and soothe the evening.</p>
+            <span class="price">$4.00</span>
           </article>
           <article class="card">
             <h3>Spiced Chai</h3>
             <p>Warm cinnamon, cardamom, and ginger in every fragrant sip.</p>
+            <span class="price">$5.00</span>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section selection">
+      <div class="section-content">
+        <h2>Select Your Tea</h2>
+        <div class="selection-panel">
+          <h3>Your Selection</h3>
+          <p class="selection-text">No tea selected</p>
+          <button class="action-button add-order-button" disabled>Add to Order</button>
         </div>
       </div>
     </section>
@@ -96,6 +110,20 @@
       <div class="chat-input">
         <input type="text" id="chat-input" placeholder="Type your message...">
         <button id="send-chat">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="cart-modal" class="cart-modal">
+    <div class="cart-container">
+      <div class="cart-header">
+        <h3>Your Cart</h3>
+        <button class="close-cart">&times;</button>
+      </div>
+      <div class="cart-summary">
+        <ul class="cart-items"></ul>
+        <p class="cart-total">Total: $0.00</p>
+        <button class="checkout-button action-button" disabled>Checkout</button>
       </div>
     </div>
   </div>

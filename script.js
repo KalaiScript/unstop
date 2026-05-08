@@ -284,3 +284,4 @@ document.addEventListener('DOMContentLoaded', function() {
       cartModal.style.display = 'none';
     });
   }
+});

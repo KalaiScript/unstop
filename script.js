@@ -184,3 +184,81 @@ document.addEventListener('DOMContentLoaded', function() {
       updateCartDisplay();
     });
   }
+
+  // Chat functionality
+  const chatIcon = document.querySelector('.chat-icon');
+  const chatModal = document.getElementById('chat-modal');
+  const closeChat = document.querySelector('.close-chat');
+  const chatInput = document.getElementById('chat-input');
+  const sendChat = document.getElementById('send-chat');
+  const chatMessages = document.getElementById('chat-messages');
+
+  if (chatIcon) {
+    chatIcon.addEventListener('click', () => {
+      chatModal.style.display = 'flex';
+    });
+  }
+
+  if (closeChat) {
+    closeChat.addEventListener('click', () => {
+      chatModal.style.display = 'none';
+    });
+  }
+
+  function addMessage(text, isUser = false) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+    messageDiv.innerHTML = `<p>${text}</p>`;
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function getBotResponse(userMessage) {
+    const msg = userMessage.toLowerCase();
+    if (msg.includes('green tea')) {
+      return "Our Classic Green Tea is fresh and grassy with a clean finish. It's perfect for a morning boost!";
+    } else if (msg.includes('chamomile')) {
+      return "Chamomile Calm has soft floral notes to help you unwind. Great for evening relaxation.";
+    } else if (msg.includes('chai')) {
+      return "Spiced Chai features warm cinnamon, cardamom, and ginger. A comforting spiced delight!";
+    } else if (msg.includes('recommend') || msg.includes('mood')) {
+      if (msg.includes('relax') || msg.includes('calm')) {
+        return "For relaxation, I recommend our Chamomile Calm tea. It's soothing and perfect for unwinding.";
+      } else if (msg.includes('energy') || msg.includes('awake')) {
+        return "For energy, try our Classic Green Tea. It's refreshing and invigorating!";
+      } else if (msg.includes('warm') || msg.includes('comfort')) {
+        return "Our Spiced Chai is warm and comforting with aromatic spices.";
+      } else {
+        return "Tell me your mood or preference, and I'll suggest a tea! For example: relaxing, energizing, or warming.";
+      }
+    } else if (msg.includes('menu') || msg.includes('teas')) {
+      return "We have Classic Green Tea, Chamomile Calm, and Spiced Chai. Which one interests you?";
+    } else if (msg.includes('hours') || msg.includes('open')) {
+      return "We're open daily from 9am to 7pm. Come visit us at 123 Leaf Lane, Greenfield!";
+    } else {
+      return "I'm here to help with tea recommendations, menu info, or any questions about our tea house. What can I assist you with?";
+    }
+  }
+
+  function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+    addMessage(text, true);
+    chatInput.value = '';
+    setTimeout(() => {
+      const response = getBotResponse(text);
+      addMessage(response);
+    }, 500);
+  }
+
+  if (sendChat) {
+    sendChat.addEventListener('click', sendMessage);
+  }
+
+  if (chatInput) {
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
+  }

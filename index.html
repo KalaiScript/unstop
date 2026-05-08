@@ -18,6 +18,7 @@
         <li><a href="gallery.html">Gallery</a></li>
       </ul>
       <div class="cart-icon">Cart (<span class="cart-count">0</span>)</div>
+      <div class="chat-icon">Chat</div>
     </div>
   </nav>
   <header class="hero">
@@ -33,7 +34,7 @@
     <section class="section intro">
       <div class="section-content">
         <h2>Handpicked Teas, Crafted for You</h2>
-        <p>We serve premium loose leaf teas, delicate blends, and herbal infusions sourced from trusted growers. Discover aromatic tastes for any mood and make every cup a ritual.......</p>
+        <p>We serve premium loose leaf teas, delicate blends, and herbal infusions sourced from trusted growers. Discover aromatic tastes for any mood and make every cup a ritual. Our tea masters carefully select leaves to ensure the highest quality and flavor in every blend.</p>
       </div>
     </section>
 
@@ -80,6 +81,24 @@
   <footer class="footer">
     <p>Evergreen Tea House • Sip slowly, savor warmth.</p>
   </footer>
+
+  <div id="chat-modal" class="chat-modal">
+    <div class="chat-container">
+      <div class="chat-header">
+        <h3>Tea Assistant</h3>
+        <button class="close-chat">&times;</button>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="message bot-message">
+          <p>Hello! I'm your Tea Assistant. How can I help you today? Ask me about our teas or recommendations!</p>
+        </div>
+      </div>
+      <div class="chat-input">
+        <input type="text" id="chat-input" placeholder="Type your message...">
+        <button id="send-chat">Send</button>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

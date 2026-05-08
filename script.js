@@ -87,8 +87,12 @@ document.addEventListener('DOMContentLoaded', function() {
       const detail = this.dataset.detail;
       const benefit = this.dataset.benefit;
 
-      selectionText.textContent = `${selectedTea} — ${detail} ${benefit}`;
-      addOrderButton.disabled = false;
+      if (selectionText) {
+        selectionText.textContent = `${selectedTea} — ${detail} ${benefit}`;
+      }
+      if (addOrderButton) {
+        addOrderButton.disabled = false;
+      }
     });
   });
 

@@ -49,7 +49,9 @@ loginForm.addEventListener('submit', (e) => {
   if (username === 'admin' && password === 'password123') {
     localStorage.setItem('adminLoggedIn', 'true');
     document.getElementById('login-screen').classList.remove('active');
-    document.getElementById('admin-dashboard').style.display = 'flex';
+    const dashboard = document.getElementById('admin-dashboard');
+    dashboard.style.display = 'flex';
+    dashboard.classList.add('animate-in');
     loadDashboard();
   } else {
     alert('Invalid credentials. Try admin / password123');
@@ -59,9 +61,13 @@ loginForm.addEventListener('submit', (e) => {
 // Logout functionality
 document.getElementById('logout-btn').addEventListener('click', () => {
   localStorage.removeItem('adminLoggedIn');
-  document.getElementById('login-screen').classList.add('active');
-  document.getElementById('admin-dashboard').style.display = 'none';
-  document.getElementById('login-form').reset();
+  const dashboard = document.getElementById('admin-dashboard');
+  dashboard.classList.remove('animate-in');
+  setTimeout(() => {
+    dashboard.style.display = 'none';
+    document.getElementById('login-screen').classList.add('active');
+    document.getElementById('login-form').reset();
+  }, 300);
 });
 
 // Check if admin is logged in on page load
@@ -69,7 +75,9 @@ window.addEventListener('load', () => {
   initializeAdminData();
   if (localStorage.getItem('adminLoggedIn') === 'true') {
     document.getElementById('login-screen').classList.remove('active');
-    document.getElementById('admin-dashboard').style.display = 'flex';
+    const dashboard = document.getElementById('admin-dashboard');
+    dashboard.style.display = 'flex';
+    dashboard.classList.add('animate-in');
     loadDashboard();
   } else {
     document.getElementById('login-screen').classList.add('active');

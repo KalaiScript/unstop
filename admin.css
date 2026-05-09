@@ -26,10 +26,28 @@
   justify-content: center;
   align-items: center;
   z-index: 9999;
+  animation: loginBgFadeIn 0.5s ease;
 }
 
 .login-screen.active {
   display: flex;
+  animation: loginFadeIn 0.6s ease;
+}
+
+@keyframes loginBgFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes loginFadeIn {
+  from { 
+    opacity: 0; 
+    transform: scale(0.9) translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1) translateY(0); 
+  }
 }
 
 .login-container {
@@ -39,6 +57,18 @@
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
   width: 100%;
   max-width: 400px;
+  animation: loginContainerSlideIn 0.8s ease;
+}
+
+@keyframes loginContainerSlideIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(-30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
 }
 
 .login-container h1 {
@@ -64,6 +94,14 @@
 .admin-dashboard {
   display: flex;
   min-height: 100vh;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.5s ease;
+}
+
+.admin-dashboard.animate-in {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .admin-sidebar {
@@ -98,10 +136,28 @@
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.logout-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.logout-btn:hover::before {
+  left: 100%;
 }
 
 .logout-btn:hover {
   background: rgba(255, 255, 255, 0.3);
+  transform: translateX(5px);
 }
 
 .admin-nav {
@@ -119,11 +175,29 @@
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.nav-item:hover::before {
+  left: 100%;
 }
 
 .nav-item:hover {
   background: rgba(255, 255, 255, 0.1);
   color: white;
+  transform: translateX(5px);
 }
 
 .nav-item.active {
@@ -131,6 +205,13 @@
   color: white;
   border-left: 4px solid white;
   padding-left: calc(1.5rem - 4px);
+  animation: navActivePulse 0.6s ease;
+}
+
+@keyframes navActivePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
 
 /* Admin Content Area */
@@ -142,7 +223,7 @@
 
 .admin-section {
   display: none;
-  animation: fadeIn 0.3s ease;
+  animation: fadeIn 0.5s ease;
 }
 
 .admin-section.active {
@@ -150,8 +231,14 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
 }
 
 .admin-section h1 {
@@ -173,6 +260,29 @@
   border-radius: 8px;
   border-left: 4px solid var(--accent);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  animation: statCardSlideIn 0.6s ease both;
+}
+
+.stat-card:nth-child(1) { animation-delay: 0.1s; }
+.stat-card:nth-child(2) { animation-delay: 0.2s; }
+.stat-card:nth-child(3) { animation-delay: 0.3s; }
+.stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes statCardSlideIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px) scale(0.95); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+  }
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .stat-card h3 {
@@ -186,6 +296,18 @@
   font-weight: bold;
   color: var(--accent-dark);
   margin: 0;
+  animation: statValueCountUp 1s ease both;
+}
+
+@keyframes statValueCountUp {
+  from { 
+    opacity: 0; 
+    transform: scale(0.8) rotateX(90deg); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1) rotateX(0deg); 
+  }
 }
 
 /* Tables */
@@ -197,6 +319,18 @@ table {
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   margin-top: 1rem;
+  animation: tableSlideIn 0.5s ease;
+}
+
+@keyframes tableSlideIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
 }
 
 table th {
@@ -205,15 +339,38 @@ table th {
   padding: 1rem;
   text-align: left;
   font-weight: 600;
+  animation: tableHeaderSlide 0.4s ease;
+}
+
+@keyframes tableHeaderSlide {
+  from { transform: translateY(-10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 table td {
   padding: 1rem;
   border-bottom: 1px solid var(--admin-border);
+  transition: all 0.2s ease;
+}
+
+table tr {
+  animation: tableRowFadeIn 0.3s ease both;
+}
+
+table tr:nth-child(1) { animation-delay: 0.1s; }
+table tr:nth-child(2) { animation-delay: 0.15s; }
+table tr:nth-child(3) { animation-delay: 0.2s; }
+table tr:nth-child(4) { animation-delay: 0.25s; }
+table tr:nth-child(5) { animation-delay: 0.3s; }
+
+@keyframes tableRowFadeIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 table tr:hover {
   background: var(--admin-hover);
+  transform: scale(1.01);
 }
 
 table tr:last-child td {
@@ -274,6 +431,30 @@ table tr:last-child td {
   border-radius: 6px;
   font-size: 1rem;
   font-family: inherit;
+  transition: all 0.3s ease;
+  animation: formInputSlideIn 0.4s ease both;
+}
+
+.form-group:nth-child(1) input,
+.form-group:nth-child(1) textarea { animation-delay: 0.1s; }
+.form-group:nth-child(2) input,
+.form-group:nth-child(2) textarea { animation-delay: 0.2s; }
+.form-group:nth-child(3) input,
+.form-group:nth-child(3) textarea { animation-delay: 0.3s; }
+.form-group:nth-child(4) input,
+.form-group:nth-child(4) textarea { animation-delay: 0.4s; }
+.form-group:nth-child(5) input,
+.form-group:nth-child(5) textarea { animation-delay: 0.5s; }
+
+@keyframes formInputSlideIn {
+  from { 
+    opacity: 0; 
+    transform: translateX(-20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
 }
 
 .form-group textarea {
@@ -286,6 +467,7 @@ table tr:last-child td {
   outline: none;
   border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(122, 157, 111, 0.1);
+  transform: scale(1.02);
 }
 
 .form-buttons {
@@ -369,6 +551,35 @@ table tr:last-child td {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+  transition: all 0.3s ease;
+  animation: analyticsCardBounceIn 0.6s ease both;
+}
+
+.analytics-card:nth-child(1) { animation-delay: 0.1s; }
+.analytics-card:nth-child(2) { animation-delay: 0.2s; }
+.analytics-card:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes analyticsCardBounceIn {
+  0% { 
+    opacity: 0; 
+    transform: scale(0.3) translateY(50px); 
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1.05) translateY(-10px); 
+  }
+  70% { 
+    transform: scale(0.95) translateY(5px); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: scale(1) translateY(0); 
+  }
+}
+
+.analytics-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .analytics-card h2 {
@@ -435,7 +646,48 @@ table tr:last-child td {
   margin-top: 1rem;
 }
 
-/* Status Badges */
+/* Enhanced Action Buttons */
+.action-button {
+  padding: 0.75rem 1.5rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.action-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.action-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.action-button:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(122, 157, 111, 0.3);
+}
+
+.action-button:active {
+  transform: translateY(0);
+}
 .status-badge {
   padding: 0.4rem 0.8rem;
   border-radius: 20px;

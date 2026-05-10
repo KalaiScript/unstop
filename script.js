@@ -197,13 +197,13 @@ document.addEventListener('DOMContentLoaded', function() {
   const sendChat = document.getElementById('send-chat');
   const chatMessages = document.getElementById('chat-messages');
 
-  if (chatIcon) {
+  if (chatIcon && chatModal) {
     chatIcon.addEventListener('click', () => {
       chatModal.style.display = 'flex';
     });
   }
 
-  if (closeChat) {
+  if (closeChat && chatModal) {
     closeChat.addEventListener('click', () => {
       chatModal.style.display = 'none';
     });
@@ -255,11 +255,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 500);
   }
 
-  if (sendChat) {
+  if (sendChat && chatModal && chatMessages) {
     sendChat.addEventListener('click', sendMessage);
   }
 
-  if (chatInput) {
+  if (chatInput && chatModal) {
     chatInput.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') {
         sendMessage();
@@ -272,14 +272,14 @@ document.addEventListener('DOMContentLoaded', function() {
   const cartModal = document.getElementById('cart-modal');
   const closeCart = document.querySelector('.close-cart');
 
-  if (cartIcon) {
+  if (cartIcon && cartModal) {
     cartIcon.addEventListener('click', () => {
       updateCartDisplay();
       cartModal.style.display = 'flex';
     });
   }
 
-  if (closeCart) {
+  if (closeCart && cartModal) {
     closeCart.addEventListener('click', () => {
       cartModal.style.display = 'none';
     });

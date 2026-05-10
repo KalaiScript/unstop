@@ -19,6 +19,7 @@
         <li><a href="admin.html" style="color: var(--accent); font-weight: 600;">Admin</a></li>
       </ul>
       <div class="cart-icon">Cart (<span class="cart-count">0</span>)</div>
+      <div class="chat-icon">Chat</div>
     </div>
   </nav>
 
@@ -94,6 +95,38 @@
   <footer class="footer">
     <p>Evergreen Tea House • Sip slowly, savor warmth.</p>
   </footer>
+
+  <div id="chat-modal" class="chat-modal">
+    <div class="chat-container">
+      <div class="chat-header">
+        <h3>Tea Assistant</h3>
+        <button class="close-chat">&times;</button>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="message bot-message">
+          <p>Hello! I'm your Tea Assistant. How can I help you today? Ask me about our teas or recommendations!</p>
+        </div>
+      </div>
+      <div class="chat-input">
+        <input type="text" id="chat-input" placeholder="Type your message...">
+        <button id="send-chat">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="cart-modal" class="cart-modal">
+    <div class="cart-container">
+      <div class="cart-header">
+        <h3>Your Cart</h3>
+        <button class="close-cart">&times;</button>
+      </div>
+      <div class="cart-summary">
+        <ul class="cart-items"></ul>
+        <p class="cart-total">Total: $0.00</p>
+        <button class="checkout-button action-button" disabled>Checkout</button>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

@@ -118,24 +118,29 @@
 }
 
 .sidebar-header {
-  padding: 2rem 0;
+  padding: 2rem 0 1rem;
   margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
 }
 
 .admin-logo {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   transition: all 0.3s ease;
-  filter: brightness(0) invert(1); /* Makes the logo white for dark sidebar */
+  display: block;
+}
+
+.admin-logo path {
+  vector-effect: non-scaling-stroke;
 }
 
 .admin-logo:hover {
   transform: scale(1.1);
-  filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
 }
 
 .logout-btn {
